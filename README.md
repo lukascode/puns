@@ -13,9 +13,9 @@ the round receives points.
 
 ## Architecture
 
-![alt text](https://raw.githubusercontent.com/lukascode/puns/master/docs/Architecture.png)
+<img align="center" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/Architecture.png">
 
-## Demo
+## App view
 
 ![alt text](https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_register.png)
 
@@ -28,3 +28,6 @@ the round receives points.
 ![alt text](https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_public_chat.png)
 
 ![alt text](https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_room.png)
+
+## Demo
+
