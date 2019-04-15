@@ -13,13 +13,19 @@ the round receives points.
 
 ## Architecture
 
-<img align="center" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/Architecture.png">
+<p align="center">
+<img src="https://raw.githubusercontent.com/lukascode/puns/master/docs/Architecture.png">
+</p>
 
 ## App view
 
+<p align="center">
 <img align="center" width="452" height="356" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_register.png">
+</p>
 
+<p align="center">
 <img align="center" width="452" height="392" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_login.png">
+</p>
 
 <img align="center" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_account.png">
 
