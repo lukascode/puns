@@ -17,17 +17,17 @@ the round receives points.
 
 ## App view
 
-![alt text](https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_register.png)
+<img align="center" width="452" height="356" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_register.png">
 
-![alt text](https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_login.png)
+<img align="center" width="452" height="392" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_login.png">
 
-![alt text](https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_account.png)
+<img align="center" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_account.png">
 
-![alt text](https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_dashboard.png)
+<img align="center" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_dashboard.png">
 
-![alt text](https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_public_chat.png)
+<img align="center" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_public_chat.png">
 
-![alt text](https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_room.png)
+<img align="center" src="https://raw.githubusercontent.com/lukascode/puns/master/docs/ui_room.png">
 
 ## Demo
 
