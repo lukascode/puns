@@ -1,0 +1,48 @@
+<div class="login-container">
+
+    <mat-card>
+      <mat-card-subtitle>
+        {{ 'puns' | translate | uppercase }}
+      </mat-card-subtitle>
+      <mat-card-title>
+        <i class="material-icons md-18">lock</i>
+        {{ 'login' | translate }}
+      </mat-card-title>
+      <mat-card-content>
+  
+        <form [formGroup]="loginForm" (keyup.enter)="login()" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="2em">
+          <mat-form-field>
+            <input matInput type="text" placeholder="Nick" formControlName="nick">
+            <mat-error *ngIf="loginForm.controls.nick.hasError('required')">{{ 'field_required' | translate }}</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field>
+            <input matInput placeholder="{{ 'password' | translate }}" formControlName="password" [type]="isPasswordHidden ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="isPasswordHidden = !isPasswordHidden">{{isPasswordHidden ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-error *ngIf="loginForm.controls.password.hasError('required')">{{ 'field_required' | translate }}</mat-error>
+          </mat-form-field>
+
+          <div class="login-result-error error-color" *ngIf="isLoginFailed">
+            <mat-icon class="material-icons md-18">error</mat-icon>
+            {{ loginFailedErrorDescription }}
+          </div>
+
+        </form>
+  
+      </mat-card-content>
+  
+      <mat-card-actions align="center">
+        <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="1em">
+          <button mat-flat-button color="primary" (click)="login()">{{ 'sign_in' | translate }}</button>
+          <button mat-raised-button (click)="register()">{{ 'registration' | translate }}</button>
+        </div>
+      </mat-card-actions>
+  
+  
+      <mat-card-footer>
+        <mat-progress-bar *ngIf="isProgressActive" mode="indeterminate"></mat-progress-bar>
+      </mat-card-footer>
+
+    </mat-card>
+  
+  </div>

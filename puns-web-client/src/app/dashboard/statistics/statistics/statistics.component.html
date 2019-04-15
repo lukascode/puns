@@ -1,0 +1,31 @@
+<div class="content-container">
+
+  <div class="table-container">
+    <table mat-table [dataSource]="players">
+
+      <ng-container matColumnDef="avatar">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <img *ngIf="!element.avatar" width="32" height="32" src="assets/images/user.png" alt="avatar">
+          <img *ngIf="element.avatar && element.avatar.loaded" width="32" height="32" [src]="element.avatar.url" alt="avatar">
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nick">
+        <th mat-header-cell *matHeaderCellDef>Nick</th>
+        <td mat-cell *matCellDef="let element"> {{element.nick}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="pointsSum">
+        <th mat-header-cell *matHeaderCellDef>Liczba punktów</th>
+        <td mat-cell *matCellDef="let element"> {{element.pointsSum}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </div>
+
+
+</div>

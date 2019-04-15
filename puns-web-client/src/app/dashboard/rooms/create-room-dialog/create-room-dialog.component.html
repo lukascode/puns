@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Dodaj pokój</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" invalidate fxLayout="column" fxLayoutAlign="center stretch">
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Nazwa" formControlName="roomName">
+      <mat-error *ngIf="form.controls.roomName.hasError('required')">Nazwa jest wymagana</mat-error>
+      <mat-error *ngIf="form.controls.roomName.hasError('maxlength')">Przekroczono maksymalną ilość znaków</mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" (click)="createRoom()">Dodaj</button>
+  <button mat-raised-button mat-dialog-close>Anuluj</button>
+</mat-dialog-actions>

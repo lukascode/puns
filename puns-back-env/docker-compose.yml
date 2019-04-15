@@ -1,0 +1,59 @@
+version: "2"
+services:
+    puns_postgres:
+        build: postgres
+        ports:
+            - "127.0.0.1:5432:5432"
+
+    puns_auth_server:
+        build: puns-auth-server
+        ports:
+            - "127.0.0.1:8082:8082"
+        depends_on:
+            - "puns_postgres"
+        links: 
+            - puns_postgres:puns_pg_core
+        volumes: 
+            - ./puns-auth-server-data:/opt/puns-auth-server/data
+
+    puns_core_api:
+        build: puns-core-api
+        ports: 
+            - "127.0.0.1:8081:8081"
+        depends_on:
+            - "puns_auth_server"
+        links:
+            - puns_postgres:puns_pg_core
+            - puns_auth_server:auth-server
+        volumes:
+            - ./puns-core-api-data:/opt/puns-core-api/data
+    
+    puns_mongo:
+        build: mongo
+        ports: 
+            - "127.0.0.1:27017:27017"
+        depends_on:
+            - "puns_auth_server"
+            - "puns_core_api"
+    
+    puns_mongo_express:
+        build: mongo-express
+        ports:
+            - "127.0.0.1:8000:8081"
+        depends_on:
+            - "puns_mongo"
+        links:
+            - puns_mongo:mongo
+    
+    # node:
+    #     build: node
+    #     ports: 
+    #         - "4001:4001"
+    #     depends_on:
+    #         - "puns_mongo"
+    #     links:
+    #         - "puns_mongo:mongo"
+    #         - "puns_auth_server:auth-server"
+    #         - "puns_core_api:core-api"
+        
+        

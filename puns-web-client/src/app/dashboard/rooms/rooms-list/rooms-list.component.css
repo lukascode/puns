@@ -1,0 +1,20 @@
+
+
+.table-container {
+  width: 100%;
+  height: 200px;
+  margin-top: 1em;
+  background-color: white;
+  position: relative;
+}
+
+.table-container .info {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.table-container table {
+  width: 100%;
+}

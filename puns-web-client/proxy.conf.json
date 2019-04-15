@@ -1,0 +1,20 @@
+{
+    "/core": {
+        "target": "http://localhost:8081",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/core": ""
+        },
+        "changeOrigin": true 
+    },
+    "/node": {
+        "target": "http://localhost:4001",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {
+            "^/node": ""
+        },
+        "changeOrigin": true
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "puns-live-server",
+  "version": "1.0.0",
+  "description": "NodeJS live server for puns project",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development node src/server.js",
+    "start:dev": "NODE_ENV=development nodemon src/server.js"
+  },
+  "author": "Lukasz",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "emojis": "^1.0.10",
+    "express": "^4.16.4",
+    "log4js": "^3.0.6",
+    "mongodb": "^3.1.10",
+    "request": "^2.88.0",
+    "socket.io": "^2.2.0",
+    "uuid": "^3.3.2"
+  }
+}

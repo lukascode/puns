@@ -1,0 +1,16 @@
+*-data
+*.jar
+*.zip
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+data/
+
+# Maven
+log/
+target/
+!/.mvn/wrapper/maven-wrapper.jar
+
+node_modules/

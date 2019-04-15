@@ -1,0 +1,20 @@
+
+.game-round-details {
+  padding: 1em;
+  border: 1px solid #A7FFEB;
+  border-radius: 5px;
+}
+
+.game-round-notification {
+  border-radius: 5px;
+  background-color: #A7FFEB;
+  padding: 1em;
+}
+
+.game-round-details .title {
+  color: gray;
+}
+
+.game-round-details .value {
+  color: #00695c;
+}

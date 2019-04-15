@@ -1,0 +1,43 @@
+<div>
+
+  <button mat-raised-button color="primary" (click)="createRoom()">Dodaj pokój</button>
+
+  <div class="table-container">
+
+    <span class="info" *ngIf="!dataSource.getLength()">Nie znaleziono żadnych pokoi</span>
+
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nazwa pokoju</th>
+        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="nOfParticipants">
+        <th mat-header-cell *matHeaderCellDef>Liczba graczy</th>
+        <td mat-cell *matCellDef="let element">{{element.nOfParticipants}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="join">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button color="accent" (click)="joinRoom(element.roomId)">Dołącz</button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [disabled]="element.nOfParticipants != 0" mat-raised-button color="warn" (click)="deleteRoom(element)">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </div>
+
+</div>

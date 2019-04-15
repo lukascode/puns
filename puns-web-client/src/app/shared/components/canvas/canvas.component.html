@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="0.2em">
+  <div style="position: relative" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="0.1em">
+    <input #colorPicker type="color" matTooltip="Wybierz kolor">
+    <select #thicknessValue><option *ngFor="let t of thickness" [value]="t.value">{{t.name}}</option></select>
+    <mat-button-toggle-group #toolGroup="matButtonToggleGroup">
+      <mat-button-toggle value="pencil" matTooltip="Pędzel" [checked]="true">
+        <mat-icon>brush</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="line" matTooltip="Prosta">
+        <mat-icon>remove</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="rectangle" matTooltip="Prostokąt">
+        <mat-icon>check_box_outline_blank</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="circle" matTooltip="Okrąg">
+        <mat-icon>panorama_fish_eye</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="rubber" matTooltip="Gumka">
+        <mat-icon>toll</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+    <button mat-raised-button (click)="clear()">Wyczyść płótno</button>
+    <div *ngIf="disabled" class="canvas-tool-overlay" matTooltip="Narzędzia do rysowania są teraz wyłączone"></div>
+  </div>
+  <canvas #canvas></canvas>
+</div>
+

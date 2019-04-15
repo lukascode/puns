@@ -1,0 +1,1 @@
+CREATE SCHEMA IF NOT EXISTS puns_core AUTHORIZATION puns_user;

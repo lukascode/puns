@@ -1,0 +1,17 @@
+<mat-card class="participants-card">
+  <mat-card-header>
+    <mat-card-title>Pokój123</mat-card-title>
+    <mat-card-subtitle>Uczestnicy</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item *ngFor="let player of players | async" role="listitem" fxLayout="row" fxLayoutAlign="1em">
+        <img *ngIf="!player.avatar" width="32" height="32" src="assets/images/user.png" alt="avatar">
+        <img *ngIf="player.avatar && player.avatar.loaded" width="32" height="32" [src]="player.avatar.url" alt="avatar">
+        <p>&nbsp;&nbsp;{{player.nick}}</p>
+        <p style="color: gray">&nbsp;&nbsp;<strong>{{player.points}}pkt</strong></p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+

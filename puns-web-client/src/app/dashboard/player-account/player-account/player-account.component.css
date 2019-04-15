@@ -1,0 +1,41 @@
+.avatar-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar {
+  border-radius: 50%;
+  vertical-align: middle;
+  transition: .5s ease;
+  z-index: 100;
+}
+
+.avatar-container:hover .avatar {
+  opacity: 0.8;
+  -webkit-filter: hue-rotate(90deg); /* Safari 6.0 - 9.0 */
+  filter: hue-rotate(90deg);
+}
+
+.avatar-container:hover .edit-avatar-icon {
+  opacity: 1;
+}
+
+.edit-avatar-icon {
+  color: white;
+  z-index: 200;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: .5s ease;
+}
+
+.spinner-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}

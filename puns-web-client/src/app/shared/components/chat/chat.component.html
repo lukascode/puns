@@ -1,0 +1,76 @@
+<div id="chat-container" class="chat-container" fxLayout="column" fxLayoutAlign="start stretch">
+
+  <div #chatConversation class="chat-conversation" fxFlex="80" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1em">
+
+    <div *ngFor="let message of messages; let i = index" class="chat-message" [class.right]="message.right" [class.left]="!message.right">
+
+
+      <div class="sender-info" fxLayout="column" fxLayoutAlign="center center">
+        <img *ngIf="!message.avatar" width="32" height="32" src="assets/images/user.png" alt="avatar">
+        <img *ngIf="message.avatar && message.avatar.loaded" width="32" height="32" [src]="message.avatar.url" alt="avatar">
+        <span><small>{{message.playerNick}}</small></span>
+      </div>
+
+      <div class="message">
+        <div *ngIf="!message.mediaId" class="message-content" [innerHTML]="message.message"></div>
+        <ng-container *ngIf="message.mediaId">
+          <div *ngIf="message.mediaImage" class="message-content">
+            <a [href]="message.mediaImage.url" target="_blank">
+              <img [src]="message.mediaImage.url" [width]="message.mediaImage.width" [height]="message.mediaImage.height" alt="image">
+            </a>
+          </div>
+          <div *ngIf="message.mediaUrl" class="message-content">
+            <a [href]="message.mediaUrl" target="_blank">{{message.mediaName}}</a>
+          </div>
+          <div [innerHTML]="message.message"></div>
+        </ng-container>
+        <div class="sending-time">
+          <em>{{message.sendingTime}}</em>
+        </div>
+      </div>
+
+      <div style="clear: both"></div>
+
+    </div>
+
+    <div class="chat-notifications" *ngIf="notificationText">
+        {{ notificationText }}
+    </div>
+
+  </div>
+
+  <div class="chat-actions" fxFlex="20" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1.5em">
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+
+      <div>
+        <button mat-icon-button color="primary" matTooltip="Dodaj plik" (click)="fileInput.click()">
+          <mat-icon>library_add</mat-icon>
+        </button>
+      </div>
+
+      <div>
+        <button mat-icon-button color="primary" matTooltip="Wyślij" (click)="sendMessage()">
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+
+      <div fxFlex="100">
+        <mat-form-field style="width:100%">
+        <textarea  id="msg" [(ngModel)]="textMessage" matInput
+                   autofocus matTextareaAutosize [matAutosizeMaxRows]="3" (keyup)="keyUp.next($event)" (keyup.enter)="sendMessage()"></textarea>
+        </mat-form-field>
+      </div>
+
+
+    </div>
+
+    <input id="file-input" #fileInput style="display: none" #fileInput type="file" (change)="onFileChanged($event)">
+    <div *ngIf="optionalMediaFileInMessage"  fxLayout="row" fxLayoutAlign="start center">
+      <button mat-raised-button color="primary">{{optionalMediaFileInMessage.name}}</button>
+      <mat-icon (click)="removeFile()" matTooltip="Usuń plik" style="cursor: pointer" class="material-icons md-18">close</mat-icon>
+    </div>
+
+
+  </div>
+</div>

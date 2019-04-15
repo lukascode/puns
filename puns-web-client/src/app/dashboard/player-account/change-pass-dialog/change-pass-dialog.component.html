@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Zmiana hasła</h2>
+<mat-dialog-content>
+
+  <form [formGroup]="changePassForm" fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="2em">
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Stare hasło" formControlName="oldPass" [type]="isOldPasswordHidden ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="isOldPasswordHidden = !isOldPasswordHidden">{{isOldPasswordHidden ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-error *ngIf="changePassForm.controls.oldPass.hasError('required')">{{ 'field_required' | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Nowe hasło" formControlName="newPass" [type]="isNewPasswordHidden ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="isNewPasswordHidden = !isNewPasswordHidden">{{isNewPasswordHidden ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-error *ngIf="changePassForm.controls.newPass.hasError('required')">{{ 'field_required' | translate }}</mat-error>
+    </mat-form-field>
+
+  </form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button (click)="save()" mat-raised-button color="primary">Zapisz</button>
+  <button mat-raised-button mat-dialog-close>Anuluj</button>
+</mat-dialog-actions>

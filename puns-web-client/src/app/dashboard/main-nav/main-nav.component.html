@@ -1,0 +1,63 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="isHandset ? 'dialog' : 'navigation'" [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
+    [opened]="!(isHandset | async)!.matches">
+    <mat-toolbar color="primary">
+      {{ 'menu' | translate }}
+      <button id="btn-close-side-nav" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.close()">
+        <mat-icon aria-label="Side nav toggle icon">close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="rooms" routerLinkActive="current">
+        <i class="material-icons">games</i>
+        <span class="list-item-title">{{ 'game_rooms' | translate }}</span>
+      </a>
+      <a mat-list-item routerLink="chat" routerLinkActive="current">
+        <i class="material-icons">chat</i>
+        <span class="list-item-title">{{ 'chat' | translate }}</span>
+      </a>
+      <a mat-list-item routerLink="statistics" routerLinkActive="current">
+        <i class="material-icons">show_chart</i>
+        <span class="list-item-title">Punkty</span>
+      </a>
+      <a mat-list-item routerLink="player-account" routerLinkActive="current">
+        <i class="material-icons">settings</i>
+        <span class="list-item-title">{{ 'account' | translate }}</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="(isHandset | async)!.matches || !drawer.opened">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>{{ 'puns' | translate }}</span>
+      <span class="fill-remaining"></span>
+
+      <div class="user-profile" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1em">
+        <span><small>{{ nick }}</small></span>
+        <mat-progress-spinner *ngIf="currentPlayerAvatarFetchInProgress" mode="indeterminate" [diameter]="16" color="accent"></mat-progress-spinner>
+        <img *ngIf="!currentPlayerAvatar && !currentPlayerAvatarFetchInProgress" width="32" height="32" src="assets/images/user.png" alt="avatar">
+        <img *ngIf="currentPlayerAvatar && currentPlayerAvatar.loaded" width="32" height="32" [src]="currentPlayerAvatar.url" alt="avatar">
+      </div>
+
+      <mat-menu #accountMenu="matMenu">
+        <button mat-menu-item (click)="currentUserAccount()">
+          <mat-icon color="accent">settings</mat-icon>
+          {{ 'account' | translate }}
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>power_settings_new</mat-icon>
+          {{ 'sign_out' | translate }}
+        </button>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+    </mat-toolbar>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

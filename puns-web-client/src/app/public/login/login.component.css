@@ -1,0 +1,12 @@
+.login-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 460px;
+}
+
+.mat-card-actions {
+    margin: 0;
+    margin-bottom: 2em;
+}

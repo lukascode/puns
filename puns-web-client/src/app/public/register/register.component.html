@@ -1,0 +1,67 @@
+<div class="container">
+
+<div class="register-container">
+
+  <mat-card>
+
+    <img class="console" src="assets/images/console.png" alt="console.png">
+
+    <mat-card-subtitle>
+      {{ 'puns' | translate | uppercase }}
+    </mat-card-subtitle>
+
+    <mat-card-title>
+      {{ 'registration' | translate }}
+    </mat-card-title>
+
+    <mat-card-content>
+
+      <form [formGroup]="registerForm" (keyup.enter)="register()"
+            fxLayout="column" fxLayoutAlign="center stretch"
+            fxLayoutGap="2em">
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="Email" formControlName="email">
+          <mat-error *ngIf="registerForm.controls.email.hasError('required')">{{ 'field_required' | translate }}</mat-error>
+          <mat-error *ngIf="registerForm.controls.email.hasError('email')">{{ 'invalid_email' | translate }}</mat-error>
+          <mat-error *ngIf="registerForm.controls.email.hasError('uniqueEmail')">Użytkownik o podanym adresie email już istnieje</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="Nick" formControlName="nick">
+          <mat-error *ngIf="registerForm.controls.nick.hasError('required')">{{ 'field_required' | translate }}</mat-error>
+          <mat-error *ngIf="registerForm.controls.nick.hasError('maxlength')">Maksymalna ilość znaków to 32</mat-error>
+          <mat-error *ngIf="registerForm.controls.nick.hasError('uniqueNick')">Ten nick jest już zajęty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="{{ 'password' | translate }}" formControlName="password" [type]="isPasswordHidden ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="isPasswordHidden = !isPasswordHidden">{{isPasswordHidden ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error *ngIf="registerForm.controls.password.hasError('required')">{{ 'field_required' | translate }}</mat-error>
+        </mat-form-field>
+
+        <div class="register-result-error error-color" *ngIf="isRegisterFailed">
+          <mat-icon class="material-icons md-18">error</mat-icon>
+          {{ registerFailedErrorDescription }}
+        </div>
+
+      </form>
+
+      <mat-card-actions align="center">
+        <div fxLayout="column" fxLayoutAlign="center stretch" fxLayoutGap="1em">
+          <button mat-flat-button color="primary" (click)="register()">{{ 'register' | translate }}</button>
+        </div>
+      </mat-card-actions>
+
+    </mat-card-content>
+
+    <mat-card-footer>
+      <mat-progress-bar *ngIf="isProgressActive" mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer>
+
+
+  </mat-card>
+
+</div>
+
+</div>

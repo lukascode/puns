@@ -1,0 +1,24 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+
+  <div class="game-round-details" fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="1em">
+    <div *ngIf="gameplay" fxLayout="row" fxLayoutAlign="space-between center">
+      <h2 *ngIf="!currentPlayerTurn"><span>Teraz rysuje</span><span class="value">&nbsp;{{turn.nick}}</span></h2>
+      <h2 *ngIf="currentPlayerTurn"><span class="title">Teraz twoja kolej, hasło:</span><span class="value">&nbsp;{{currentWord}}</span></h2>
+      <h2><span class="title">Czas:</span><span class="value">&nbsp;{{gameTimeDuration}}</span></h2>
+    </div>
+    <div *ngIf="notificationText" class="game-round-notification" [innerHTML]="notificationText"></div>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="20" style="height: 525px">
+      <!--<app-chat-participants [roomId]="roomId" *ngIf="exists"></app-chat-participants>-->
+      <app-specific-room-participants [roomId]="roomId" *ngIf="exists"></app-specific-room-participants>
+    </div>
+    <div>
+      <app-canvas [roomId]="roomId" *ngIf="exists" [disabled]="!currentPlayerTurn && gameplay"></app-canvas>
+    </div>
+    <div fxFlex style="height: 525px">
+      <app-chat-view [roomId]="roomId" *ngIf="exists"></app-chat-view>
+    </div>
+  </div>
+</div>

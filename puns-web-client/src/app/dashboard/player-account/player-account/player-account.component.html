@@ -1,0 +1,33 @@
+<div style="position: relative" fxLayout="row" fxLayoutAlign="start start">
+  <div *ngIf="currentPlayer" class="content-container" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="2em">
+
+    <div class="avatar-container" matTooltip="Zmień avatar" matTooltipPosition="right" (click)="avatarFileInput.click()">
+      <input #avatarFileInput style="display: none" type="file" accept="image/*" (change)="onAvatarChanged($event)">
+      <mat-icon class="edit-avatar-icon material-icons md-24">edit</mat-icon>
+      <img class="avatar" *ngIf="!currentPlayerAvatar && !progress" width="96" height="96" src="assets/images/user.png" alt="avatar">
+      <img class="avatar" *ngIf="currentPlayerAvatar && currentPlayerAvatar.loaded" width="96" height="96" [src]="currentPlayerAvatar.url" alt="avatar">
+    </div>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Nick" [value]="currentPlayer?.nick" disabled>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="Email" [value]="currentPlayer?.email" disabled>
+    </mat-form-field>
+
+    <div>
+      Suma punktów: <span style="color: gray"><strong>{{pointsSum}}</strong></span>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="changePass()">Zmień hasło</button>
+
+  </div>
+
+  <div class="content-container" fxLayout="column" fxLayoutAlign="start start">
+
+  </div>
+
+  <mat-progress-spinner *ngIf="progress" class="spinner-center" [diameter]="32"></mat-progress-spinner>
+
+</div>

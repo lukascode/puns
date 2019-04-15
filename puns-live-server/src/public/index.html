@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+    <br>
+    <button id="send">Send message</button>
+
+    <hr><br>
+
+    <script>
+        
+            window.onload = function() {
+    
+                var socket = io();
+                console.log('SOCKET', socket);
+
+                let rid = null;
+
+                socket.on('public-room-id', response => {
+                    console.log(response);
+                    rid = response._rid;
+                });
+    
+                socket.on('message', function(msg) {
+                    console.log(msg);
+                });
+    
+    
+                document.getElementById('send').addEventListener('click', function() {
+                    if(rid) {
+                        let msg = document.getElementById('message').value;
+                        
+                        let message = {
+                            meta: {
+                                _rid: rid,
+                            },
+                            message: {
+                                playerId: 1,
+                                playerNick: 'Mark',
+                                message: msg
+                            }
+                        };
+
+                        socket.emit('message', message);
+                    }
+                });
+    
+               
+            }
+    
+        </script>
+
+</body>
+</html>
