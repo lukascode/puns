@@ -23,7 +23,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <lombok.version>1.16.20</lombok.version>
         <swagger.version>2.7.0</swagger.version>
-        <h2database.version>1.4.197</h2database.version>
+        <h2database.version>2.1.210</h2database.version>
         <spring.boot.maven.plugin.version>2.0.2.RELEASE</spring.boot.maven.plugin.version>
         <spring.boot.starter.security.version>2.0.2.RELEASE</spring.boot.starter.security.version>
         <oauth.version>2.0.10.RELEASE</oauth.version>
